@@ -1,7 +1,7 @@
 :root {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    --fundo: #f8f8f8;
+    --fundo: #fff;
     --fundo-banner: #5499ba;
     --fundo-menu: #224466;
     --fundo-caixas: #eeeeee;
@@ -22,11 +22,11 @@ body {
 }
 
 .layout {
-    display: flex;
-    flex-wrap: wrap; /* Permite que os itens descam em telas menores */
-    align-items: flex-start;
+    display: grid;
+	grid-template-columns: 250px minmax(0, 1fr) 260px;
+    align-items: start;
     gap: 20px;
-    padding: 20px;
+    padding: 20px 150px;
 }
 
 .cabecalho {
@@ -43,7 +43,10 @@ body {
 }
 
 #logo {
-    width: 330px;
+    display: block;
+	width: 100%;
+	max-width: 330px;
+	height: auto;
 }
 
 .menu {
@@ -71,18 +74,30 @@ body {
 }
 
 .flutuante {
-    position: absolute;
-    top: 50px;
-    right: 150px;
+    position: relative;
+    top: -170px;
+    right: auto;
+	width: 100%;
     max-width: 260px;
+	margin-bottom: 0;
     padding: 12px;
     border-radius: 15px;
     background-color: var(--fundo);
-    color: #456;
+	z-index: 2;
+}
+
+.flutuante h2, .flutuante p {
+	margin: 8px;
 }
 
 .flutuante h2 {
     font-size: 20px;
+	color: #333;
+}
+
+.flutuante p {
+	line-height: 20px;
+	color: #456;
 }
 
 .flutuante section {
@@ -99,15 +114,38 @@ body {
     background-color: #eee;
 }
 
+.flutuante button {
+	position: relative;
+	padding: 8px 10px;
+	margin-bottom: 8px;
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	border: 1px solid #fa2;
+	border-radius: 5px;
+	background: #fa2 url(https://web.archive.org/web/20100722014630im_/http://s.twimg.com/a/1279750718/images/fronts/bg-btn-signup.png) repeat-x 0 0;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: #333;
+	cursor: pointer;
+}
+
+.flutuante button:hover {
+	background-position: 0 -5px;
+	color: #111;
+}
+
+.flutuante button:active {
+	background-image: none;
+}
+
 .caixa {
     background-color: var(--fundo-caixas);
     border-radius: 8px;
     margin: 0;
-    min-height: 300px;
-    width: 100%;
+    min-height: 250px;
     max-width: 250px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex: 1 1 250px; /* Adapta ao espaço disponível */
 }
 
 .conteudo {
@@ -116,32 +154,85 @@ body {
     font-size: 14px;
     font-weight: normal;
     text-align: justify;
-    width: 100%;
-    flex: 2 1 300px; /* Expande para ocupar o espaço principal */
     margin: 0;
     min-height: auto;
 }
+
+.conteudo hr {
+	border: 1px solid #eee;
+}
  
-.imagem {
+.topico {
+	display: flex;
+	align-items: center;
+	gap: 20px;
     width: 100%;
-    max-width: 200px;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    background-color: var(--fundo-caixas);
+    max-width: 100%;
+	margin: 20px 0;
+    padding: 0;
+}
+
+.topico img {
+	display: block;
+	flex: 0 0 200px;
+	height: auto;
+	object-fit: contain;
+}
+
+.topico:not(:has(img)) {
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.topico:not(:has(img)) p {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+}
+
+.topico p {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+	color: var(--texto-principal);
+	font-size: 14px;
+	font-family: Verdana, sans-serif;
+	line-height: 1.7;
+	text-align: justify;
 }
 
 .rodape {
-    background: linear-gradient(to bottom, #ecedec,#efeeef);
-    padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 15px;
+    background: #eee url(https://web.archive.org/web/20100722014630im_/http://s.twimg.com/a/1279750718/images/fronts/bg-ftr-top.gif) repeat-x 0 0;
+	width: 100%;
+	margin: 0 auto;
+    padding: 20px max(20px, calc((100% - 1170px) / 2));
     text-align: center;
     color: #666666;
     font-size: 14px;
-    min-height: 50px;
+    min-height: 70px;
+}
+
+.rodape p {
+	margin: 5px 0;
+}
+
+.rodape a {
+	margin-top: 5px;
+	color: #27b;
+	text-decoration: none;
+}
+
+.rodape a:hover {
+	text-decoration: underline;
 }
 
 .conteudo-caixa {
     text-align: justify;
-    padding: 10px;
+    padding: 0 14px;
     color: var(--texto-principal);
 }
 
@@ -150,6 +241,10 @@ body {
     font-weight: bold;
     margin-bottom: 10px;
     color: #686667;
+}
+
+.conteudo-caixa hr {
+	border: 1px solid #ddd;
 }
 
 .frase-banner {
@@ -162,11 +257,14 @@ body {
 
 .container-pesquisa {
     position: relative;
-    display: inline-block;
+    display: flex;
     width: 100%;
     max-width: 340px;
     opacity: 50%;
     transition: opacity 0.4s;
+	background: #fff;
+    border: 1px solid #fff;
+	border-radius: 5px;
 }
 
 .container-pesquisa:hover {
@@ -174,41 +272,67 @@ body {
 }
 
 .barra-pesquisa {
+	flex: 1;
+	min-width: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     padding: 5px 40px 5px 10px;
-    border-radius: 5px;
+    border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
     border: none;
     height: 32px;
-    width: 100%;
-    background: #fff;
     color: var(--texto-segundario);
-    box-sizing: border-border-box;
+    box-sizing: border-box;
 }
 
 .botao-pesquisa {
+	flex-shrink: 0;
     font-family: Arial, Helvetica, sans-serif;
-    position: absolute;
-    right: 1px;
-    top: 1px;
-    bottom: 1px;
-    padding: 0 15px;
-    background: linear-gradient(to bottom, #fff, #ccc);
+    padding: 5px 15px;
+    background: #bbb url(https://web.archive.org/web/20100722014630im_/http://s.twimg.com/a/1279750718/images/fronts/bg-btn-search.png) repeat-x 0 0;
     border-radius: 0 3px 3px 0;
     color: #333333;
     font-size: 14px;
     cursor: pointer;
-    border: none;
+	border: none;
+}
+
+.botao-pesquisa:hover {
+	background-position: 0 -5px;
+	color: #111;
+}
+
+.botao-pesquisa:active {
+	background-image: none;
 }
 
 /* Adjusts responsivos para telas menores (smartphones) */
 @media (max-width: 768px) {
+	.cabecalho {
+		padding: 20px;
+	}
+
     .topo {
         flex-direction: column;
         align-items: stretch;
+		gap: 15px;
     }
 
+	.topo a {
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+
+	#logo {
+		width: 100%;
+		max-width: 280px;
+		height: auto;
+		margin: 0 auto;
+	}
+
     .container-pesquisa {
+		width: 100%;
         max-width: 100%;
     }
 
@@ -223,10 +347,42 @@ body {
     }
 
     .layout {
-        flex-direction: column;
+        grid-template-columns: minmax(0, 1fr);
+		padding: 20px;
     }
+
+	.flutuante {
+		position: relative;
+		top: 0;
+		max-width: 100%;
+	}
 
     .caixa {
         max-width: 100%;
     }
+
+	.topico {
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.topico img {
+		flex: none;
+		width: 100%;
+		max-width: 200px;
+	}
+
+	.topico p {
+		width: 100%;
+	}
+
+	.topico:not(:has(img)) {
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.topico:not(:has(img)) p {
+		width: 100%;
+	}
 }

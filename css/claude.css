@@ -1,22 +1,14 @@
 @import url(https://fonts.googleapis.com/css?family=Khula:700);
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap');
+@import url('https://googleapis.com');
 
 body {
+  background-color: #C15F3C;
   margin: 0;
-  min-height: 100vh;
-  background-color: #8c3b2a; 
-  background-image: linear-gradient(165deg, #c15f3c 0%, #a94a31 38%, #7a3530 70%, #3d2a3f 100%);
-  background-attachment: fixed;
-}
-
-p {
-  color: #1A1A1A;
-  font-family: 'Open Sans', sans-serif;
 }
 
 ::selection {
   color: #ffffff;
-  background-color: #D97757;
+  background-color: #e74c3c;
 }
 
 .barramenu {
@@ -231,25 +223,26 @@ p {
   opacity: 0;
 }
 
-.Titles{
+.Title2{
   color: #FFFFFF;
   text-align: center;
   font-size: x-large;
   font-family: 'Poppins', sans-serif;
 }
 
-.TextoBalao {
+.TextoBalao1 {
   position: relative;
   background:  #FFFFFF;
   color: #fff;
   padding: 20px;
   border-radius: 15px;
   width: 300px;
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   margin: 20px;
 }
 
-.TextoBalao::after {
+.TextoBalao1::after {
   content: "";
   position: absolute;
   left: -20px;
@@ -258,228 +251,4 @@ p {
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
   border-right: 20px solid #FFFFFF;
-}
-
-/* Caixa única: "O que é o Claude?" + "Chatbots" */
-.LinhaIntro {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 8px 32px;
-}
-
-.LinhaIntro .TextoBalao {
-  flex: 0 0 300px;
-}
-
-.TextoCaixa {
-  box-sizing: border-box;
-  flex: 1 1 420px;
-  margin: 20px 2rem 20px 0;
-  padding: 28px 32px;
-  background: #ffffff;
-  border: 1px solid #e5e2d9;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.TextoCaixa h3 {
-  font-family: 'Poppins', sans-serif;
-  color: #2b2a28;
-  font-size: 1.1rem;
-  margin: 0 0 8px;
-}
-
-.TextoCaixa h3:not(:first-child) {
-  margin-top: 28px;
-}
-
-.TextoCaixa p {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.75;
-}
-
-@media (max-width: 640px) {
-  .TextoCaixa {
-    margin: 0 1rem 20px;
-    padding: 20px;
-  }
-}
-
-.TextoCaixaGrande {
-  --cg-fundo: #ffffff;
-  --cg-borda: #e5e2d9;
-  --cg-texto: #2b2a28;
-  --cg-suave: #73726c;
-  --cg-destaque: #c15f3c;
-
-  display: block;
-  clear: both;
-  box-sizing: border-box;
-  width: calc(100% - 4rem);
-  margin: 32px 2rem 64px;
-  background: var(--cg-fundo);
-  border: 1px solid var(--cg-borda);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
-}
-
-.TextoCaixaGrande summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 20px 32px;
-  cursor: pointer;
-  list-style: none;
-  color: var(--cg-texto);
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  transition: background-color 0.15s ease;
-}
-
-.TextoCaixaGrande summary::-webkit-details-marker {
-  display: none;
-}
-
-.TextoCaixaGrande summary:hover {
-  background: #f7f5ef;
-}
-
-.TextoCaixaGrande summary:focus-visible {
-  outline: 2px solid var(--cg-destaque);
-  outline-offset: -2px;
-}
-
-.TextoCaixaGrande summary::after {
-  content: "";
-  flex-shrink: 0;
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid var(--cg-suave);
-  border-bottom: 2px solid var(--cg-suave);
-  transform: rotate(45deg);
-  transition: transform 0.2s ease;
-}
-
-.TextoCaixaGrande[open] summary::after {
-  transform: rotate(-135deg);
-}
-
-/* Texto corrido, sem colunas e sem divisões */
-.TextoCaixaGrande p {
-  margin: 0;
-  padding: 8px 32px 36px;
-  color: var(--cg-texto);
-  font-family: 'Open Sans', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.8;
-  text-align: left;
-}
-
-@media (max-width: 640px) {
-  .TextoCaixaGrande {
-    width: calc(100% - 2rem);
-    margin: 24px 1rem 48px;
-  }
-
-  .TextoCaixaGrande summary {
-    padding: 16px 20px;
-  }
-
-  .TextoCaixaGrande p {
-    padding: 4px 20px 24px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .TextoCaixaGrande summary,
-  .TextoCaixaGrande summary::after {
-    transition: none;
-  }
-}
-
-.LinhaBalao {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 32px;
-}
-
-.LogoAnthropic {
-  margin: 20px 0;
-}
-
-.LogoAnthropic img {
-  display: block;
-  height: 300px;
-  width: auto;
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
-}
-
-@keyframes entrar {
-  from {
-    opacity: 0;
-    transform: translateY(28px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.TextoBalao,
-.TextoCaixa,
-.TextoCaixaGrande,
-.LogoAnthropic {
-  animation: entrar 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-.TextoBalao {
-  transform-origin: left top;
-}
-@supports (animation-timeline: view()) {
-  .TextoBalao,
-  .TextoCaixa,
-  .TextoCaixaGrande,
-  .LogoAnthropic {
-    animation: entrar linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 45%;
-  }
-}
-.TextoBalao,
-.TextoCaixa,
-.TextoCaixaGrande,
-.LogoAnthropic img {
-  transition: translate 0.25s ease, box-shadow 0.25s ease;
-}
-
-.TextoBalao:hover,
-.TextoCaixa:hover,
-.TextoCaixaGrande:hover,
-.LogoAnthropic img:hover {
-  translate: 0 -4px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .TextoBalao,
-  .TextoCaixa,
-  .TextoCaixaGrande,
-  .LogoAnthropic {
-    animation: none;
-  }
-
-  .TextoBalao,
-  .TextoCaixa,
-  .TextoCaixaGrande,
-  .LogoAnthropic img {
-    transition: none;
-  }
 }
